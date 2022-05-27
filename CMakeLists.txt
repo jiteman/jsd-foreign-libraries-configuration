@@ -33,5 +33,9 @@ set( VORBISENC_LIBRARY ${CMAKE_CURRENT_BINARY_DIR}/0009-vorbis/lib/libvorbisenc.
 set( VORBISFILE_LIBRARY ${CMAKE_CURRENT_BINARY_DIR}/0009-vorbis/lib/libvorbisfile.so )
 
 add_subdirectory( 0010-flac )
+
+set( FLAC_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/0010-flac/include )
+set( FLAC_LIBRARY ${CMAKE_CURRENT_BINARY_DIR}/0010-flac/src/libFLAC/FLAC.so )
+
 add_subdirectory( 0011-SFML )
 
