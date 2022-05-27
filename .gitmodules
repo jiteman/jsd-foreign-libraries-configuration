@@ -1,0 +1,48 @@
+[submodule "0000-FreeGLUT"]
+	path = 0000-FreeGLUT
+	url = https://github.com/dcnieho/FreeGLUT.git
+	branch = master
+[submodule "0001-zlib"]
+	path = 0001-zlib
+	url = https://github.com/madler/zlib.git
+	branch = master
+[submodule "0002-png"]
+	path = 0002-png
+	url = https://github.com/glennrp/libpng.git
+	branch = master
+[submodule "0003-freetype2"]
+	path = 0003-freetype2
+	url = https://github.com/personal-mirrors/freetype2.git
+	branch = master
+[submodule "0004-glew-cmake"]
+	path = 0004-glew-cmake
+	url = https://github.com/Perlmint/glew-cmake.git
+	branch = master
+[submodule "0005-SDL"]
+	path = 0005-SDL
+	url = https://github.com/SDL-mirror/SDL.git
+	branch = master
+[submodule "0006-openal-soft"]
+	path = 0006-openal-soft
+	url = https://github.com/kcat/openal-soft.git
+	branch = master
+[submodule "0007-freealut"]
+	path = 0007-freealut
+	url = https://github.com/vancegroup/freealut.git
+	branch = master
+[submodule "0008-ogg"]
+	path = 0008-ogg
+	url = https://github.com/xiph/ogg.git
+	branch = master
+[submodule "0009-vorbis"]
+	path = 0009-vorbis
+	url = https://github.com/xiph/vorbis.git
+	branch = master
+[submodule "0010-flac"]
+	path = 0010-flac
+	url = https://github.com/xiph/flac.git
+	branch = master
+[submodule "0011-SFML"]
+	path = 0011-SFML
+	url = https://github.com/SFML/SFML.git
+	branch = master
