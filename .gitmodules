@@ -46,3 +46,11 @@
 	path = 0011-SFML
 	url = https://github.com/SFML/SFML.git
 	branch = master
+[submodule "0012-bzip2"]
+	path = 0012-bzip2
+	url = https://github.com/libarchive/bzip2.git
+	branch = master
+[submodule "0013-hardbuzz"]
+	path = 0013-hardbuzz
+	url = https://github.com/harfbuzz/harfbuzz.git
+	branch = master
