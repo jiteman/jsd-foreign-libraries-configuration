@@ -53,4 +53,4 @@
 [submodule "0013-hardbuzz"]
 	path = 0013-hardbuzz
 	url = https://github.com/harfbuzz/harfbuzz.git
-	branch = master
+	branch = main
