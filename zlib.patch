@@ -1,0 +1,12 @@
+diff -ruN 0001-zlib/CMakeLists.txt 0001-zlib-new/CMakeLists.txt
+--- 0001-zlib/CMakeLists.txt	2022-06-01 21:18:04.395437802 +0300
++++ 0001-zlib-new/CMakeLists.txt	2022-06-01 21:19:45.594416708 +0300
+@@ -83,7 +83,7 @@
+ 		${ZLIB_PC} @ONLY)
+ configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
+ 		${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
+-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
++include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ 
+ #============================================================================

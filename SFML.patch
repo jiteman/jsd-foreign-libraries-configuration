@@ -1,0 +1,75 @@
+diff -ruN 0011-SFML/cmake/Macros.cmake 0011-SFML-new/cmake/Macros.cmake
+--- 0011-SFML/cmake/Macros.cmake	2022-06-01 21:33:32.855418860 +0300
++++ 0011-SFML-new/cmake/Macros.cmake	2022-06-01 20:25:10.972306731 +0300
+@@ -368,16 +368,16 @@
+     list(GET ARGN 0 target)
+     list(REMOVE_AT ARGN 0)
+ 
+-    if (TARGET ${target})
+-        message(FATAL_ERROR "Target '${target}' is already defined")
+-    endif()
+-
+     cmake_parse_arguments(THIS "" "" "INCLUDE;LINK" ${ARGN})
+     if (THIS_UNPARSED_ARGUMENTS)
+         message(FATAL_ERROR "Unknown arguments when calling sfml_import_library: ${THIS_UNPARSED_ARGUMENTS}")
+     endif()
+ 
+-    add_library(${target} INTERFACE)
++    if (NOT TARGET ${target})
++		add_library(${target} INTERFACE)
++	else()
++        message( WARNING "Target '${target}' is already defined" )
++    endif()
+ 
+     if (THIS_INCLUDE)
+         foreach(include_dir IN LISTS THIS_INCLUDE)
+@@ -409,21 +409,22 @@
+     list(GET ARGN 0 target)
+     list(REMOVE_AT ARGN 0)
+ 
+-    if (TARGET ${target})
+-        message(FATAL_ERROR "Target '${target}' is already defined")
++    if ( NOT TARGET ${target} )
++		cmake_parse_arguments(THIS "" "" "INCLUDE;LINK" ${ARGN})
++		if (THIS_UNPARSED_ARGUMENTS)
++			message(FATAL_ERROR "Unknown arguments when calling sfml_import_library: ${THIS_UNPARSED_ARGUMENTS}")
++		endif()
++
++		set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules/")
++		if (SFML_OS_IOS)
++			find_host_package(${target} REQUIRED)
++		else()
++			find_package(${target} REQUIRED)
++		endif()
++	else()
++        message( WARNING "Target '${target}' is already defined" )
+     endif()
+ 
+-    cmake_parse_arguments(THIS "" "" "INCLUDE;LINK" ${ARGN})
+-    if (THIS_UNPARSED_ARGUMENTS)
+-        message(FATAL_ERROR "Unknown arguments when calling sfml_import_library: ${THIS_UNPARSED_ARGUMENTS}")
+-    endif()
+-
+-    set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules/")
+-    if (SFML_OS_IOS)
+-        find_host_package(${target} REQUIRED)
+-    else()
+-        find_package(${target} REQUIRED)
+-    endif()
+ 
+     # Make sure to interpret the items in INCLUDE and LINK parameters. sfml_add_external()
+     # does not interpret given items in order to also accept parameters that must not be interpreted
+diff -ruN 0011-SFML/src/SFML/Graphics/CMakeLists.txt 0011-SFML-new/src/SFML/Graphics/CMakeLists.txt
+--- 0011-SFML/src/SFML/Graphics/CMakeLists.txt	2022-06-01 21:33:32.855418860 +0300
++++ 0011-SFML-new/src/SFML/Graphics/CMakeLists.txt	2022-06-01 20:32:24.683450330 +0300
+@@ -124,8 +124,8 @@
+     target_link_libraries(sfml-graphics PRIVATE legacy_stdio_definitions.lib)
+ endif()
+ 
+-sfml_find_package(Freetype INCLUDE "FREETYPE_INCLUDE_DIRS" LINK "FREETYPE_LIBRARY")
+-target_link_libraries(sfml-graphics PRIVATE Freetype)
++sfml_find_package(freetype INCLUDE "FREETYPE_INCLUDE_DIRS" LINK "FREETYPE_LIBRARY")
++target_link_libraries(sfml-graphics PRIVATE freetype)
+ 
+ # add preprocessor symbols
+ target_compile_definitions(sfml-graphics PRIVATE "STBI_FAILURE_USERMSG")
